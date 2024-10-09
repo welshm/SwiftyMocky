@@ -1499,7 +1499,7 @@ class VariableWrapper {
     var getter: String {
         let staticModifier = variable.isStatic ? "\(scope)." : ""
         let returnValue = variable.isOptional ? "optionalGivenGetterValue(.\(propertyCaseGetName), \"\(noStubDefinedMessage)\")" : "givenGetterValue(.\(propertyCaseGetName), \"\(noStubDefinedMessage)\")"
-        return "\n\t\tget {\t\(staticModifier)self.queue.sync { }invocations.append(.\(propertyCaseGetName)) }; return \(staticModifier)\(privatePrototypeName) ?? \(returnValue) }"
+        return "\n\t\tget {\t\(staticModifier)self.queue.sync { invocations.append(.\(propertyCaseGetName)) }; return \(staticModifier)\(privatePrototypeName) ?? \(returnValue) }"
     }
     var setter: String {
         let staticModifier = variable.isStatic ? "\(scope)." : ""
